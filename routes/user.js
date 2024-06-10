@@ -34,7 +34,7 @@ router.post("/register", async function (req, res, next) {
   }
 });
 
-// Endpoint để đăng nhập người dùng
+// Endpoint để đăng nhập
 router.post("/login", async function (req, res, next) {
   try {
     const { email, password } = req.body;
