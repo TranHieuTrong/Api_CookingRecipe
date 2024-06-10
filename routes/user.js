@@ -3,7 +3,6 @@ const router = express.Router();
 const UserController = require("../modules/user/UserController");
 const UserModel = require("../modules/user/UserModel");
 
-// Endpoint để lấy tất cả người dùng
 router.get("/getUser", async function (req, res, next) {
   try {
     const users = await UserController.getAll();
@@ -13,7 +12,6 @@ router.get("/getUser", async function (req, res, next) {
   }
 });
 
-// Endpoint để đăng ký người dùng mới
 router.post("/register", async function (req, res, next) {
   try {
     const { name, email, password, image, phone } = req.body;
@@ -34,7 +32,6 @@ router.post("/register", async function (req, res, next) {
   }
 });
 
-// Endpoint để đăng nhập
 router.post("/login", async function (req, res, next) {
   try {
     const { email, password } = req.body;
@@ -50,13 +47,10 @@ router.post("/login", async function (req, res, next) {
   }
 });
 
-// Endpoint để cập nhật người dùng theo ID
 router.put("/updateUser/:id", async function (req, res, next) {
   try {
     const { id } = req.params;
     const updateData = req.body;
-
-    // Kiểm tra xem email mới có trùng với email của người dùng khác không
     const existingUser = await UserModel.findOne({
       email: updateData.email,
       _id: { $ne: id },
