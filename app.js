@@ -6,13 +6,18 @@ var logger = require("morgan");
 var cors = require("cors");
 
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+
+// Load environment variables from .env file
+dotenv.config();
+
+// Get MongoDB URL from environment variables
+const MONGODB_URL = process.env.MONGODB_URL;
 
 // Kết nối đến MongoDB Atlas
+// Kết nối đến MongoDB Atlas
 mongoose
-  .connect("mongodb://localhost:27017/CookingRepice", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(MONGODB_URL)
   .then(() => console.log(">>>>>>>>>> DB Connected!!!!!!"))
   .catch((err) => console.log(">>>>>>>>> DB Error: ", err));
 
