@@ -20,7 +20,6 @@ mongoose
   .connect(MONGODB_URL)
   .then(() => console.log(">>>>>>>>>> DB Connected!!!!!!"))
   .catch((err) => console.log(">>>>>>>>> DB Error: ", err));
-
 var userRouter = require("./routes/user");
 var adminRouter = require("./routes/admin");
 var cateRouter = require("./routes/category");
